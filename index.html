@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blender & Rotoscope Project</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <script>
+  function toggleMenu() {
+    const menu = document.getElementById("navLinks");
+    menu.classList.toggle("open");
+  }
+</script>
+  <header id="home">
+  <div class="header-container">
+    <button class="burger" onclick="toggleMenu()">☰</button>
+    <h1>🌌 Blender & Rotoscope Project</h1>
+    <p>Discover the planets and see your age on every world in our solar system!</p>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#age">Age</a>
+      <a href="#explore">Explore</a>
+      <a href="#description">Descriptions</a>
+      <a href="#videos">Videos</a>
+      <a href="#about">About</a>
+    </nav>
+  </div>
+</header>
+
+  <main>
+    <!-- Animated Solar System Orbits (Clickable) -->
+     <div class="solar-orbit-system" id="home" aria-label="Animated Solar System">
+  <div class="sun-center">
+    <button class="orbit-btn" onclick="scrollToDesc('desc-sun')" aria-label="Go to Sun">
+      <img src="img/sun.png" alt="Sun" class="sun-img" />
+    </button>
+  </div>
+
+  <div class="orbit orbit-mercury">
+    <button class="orbit-btn" onclick="scrollToDesc('desc-mercury')" aria-label="Go to Mercury">
+      <img src="img/mercury.png" alt="Mercury" class="planet-img" />
+    </button>
+  </div>
+      <div class="orbit orbit-venus">
+        <button class="orbit-btn" onclick="scrollToDesc('desc-venus')" aria-label="Go to Venus">
+          <img src="img/venus.png" alt="Venus" class="planet-img" />
+        </button>
+      </div>
+      <div class="orbit orbit-earth">
+        <button class="orbit-btn" onclick="scrollToDesc('desc-earth')" aria-label="Go to Earth">
+          <img src="img/earth.png" alt="Earth" class="planet-img" />
+        </button>
+      </div>
+      <div class="orbit orbit-mars">
+        <button class="orbit-btn" onclick="scrollToDesc('desc-mars')" aria-label="Go to Mars">
+          <img src="img/mars.png" alt="Mars" class="planet-img" />
+        </button>
+      </div>
+      <div class="orbit orbit-jupiter">
+        <button class="orbit-btn" onclick="scrollToDesc('desc-jupiter')" aria-label="Go to Jupiter">
+          <img src="img/jupiter.png" alt="Jupiter" class="planet-img" />
+        </button>
+      </div>
+      <div class="orbit orbit-saturn">
+        <button class="orbit-btn" onclick="scrollToDesc('desc-saturn')" aria-label="Go to Saturn">
+          <img src="img/saturn.png" alt="Saturn" class="planet-img" />
+        </button>
+      </div>
+      <div class="orbit orbit-uranus">
+        <button class="orbit-btn" onclick="scrollToDesc('desc-uranus')" aria-label="Go to Uranus">
+          <img src="img/uranus.png" alt="Uranus" class="planet-img" />
+        </button>
+      </div>
+      <div class="orbit orbit-neptune">
+        <button class="orbit-btn" onclick="scrollToDesc('desc-neptune')" aria-label="Go to Neptune">
+          <img src="img/neptune.png" alt="Neptune" class="planet-img" />
+        </button>
+      </div>
+      <div class="orbit orbit-pluto">
+  <button class="orbit-btn" onclick="scrollToDesc('desc-pluto')" aria-label="Go to Pluto">
+    <img src="img/pluto.png" alt="Pluto" class="planet-img" />
+  </button>
+</div>
+       </div>
+
+    <!-- Universal Age Converter -->
+    <div class="container" id="age" aria-label="Universal Age Converter">
+      <form onsubmit="convertUniversalAge(); return false;" autocomplete="off">
+        <div class="form-group">
+          <label for="inputAge">Your Age:</label>
+          <input type="number" id="inputAge" placeholder="e.g. 25" min="0.01" step="0.01" required aria-required="true" />
+          <label for="inputPlanet">on</label>
+          <select id="inputPlanet" aria-label="Select planet">
+            <option value="Mercury">Mercury</option>
+            <option value="Venus">Venus</option>
+            <option value="Earth" selected>Earth</option>
+            <option value="Mars">Mars</option>
+            <option value="Jupiter">Jupiter</option>
+            <option value="Saturn">Saturn</option>
+            <option value="Uranus">Uranus</option>
+            <option value="Neptune">Neptune</option>
+            <option value="Pluto">Pluto</option>
+          </select>
+          <button type="submit">Convert</button>
+        </div>
+      </form>
+      <div class="results" id="results" aria-live="polite"></div>
+    </div>
+
+    <!-- Planets Gallery -->
+    <div class="gallery-title" id="explore">🪐 Explore the Planets</div>
+    <div class="wrapper" role="navigation" aria-label="Planets Gallery">
+      <div class="planet-container" tabindex="0">
+        <a href="#desc-sun" aria-label="Sun"><img src="img/sun.png" alt="Sun" /><div class="planet-label"><span class="planet-emoji"></span>Sun</div></a>
+      </div>
+      <div class="planet-container" tabindex="0">
+        <a href="#desc-mercury" aria-label="Mercury"><img src="img/mercury.png" alt="Mercury" /><div class="planet-label"><span class="planet-emoji"></span>Mercury</div></a>
+      </div>
+      <div class="planet-container" tabindex="0">
+        <a href="#desc-venus" aria-label="Venus"><img src="img/venus.png" alt="Venus" /><div class="planet-label"><span class="planet-emoji"></span>Venus</div></a>
+      </div>
+      <div class="planet-container" tabindex="0">
+        <a href="#desc-earth" aria-label="Earth"><img src="img/earth.png" alt="Earth" /><div class="planet-label"><span class="planet-emoji"></span>Earth</div></a>
+      </div>
+      <div class="planet-container" tabindex="0">
+        <a href="#desc-mars" aria-label="Mars"><img src="img/mars.png" alt="Mars" /><div class="planet-label"><span class="planet-emoji"></span>Mars</div></a>
+      </div>
+      <div class="planet-container" tabindex="0">
+        <a href="#desc-jupiter" aria-label="Jupiter"><img src="img/jupiter.png" alt="Jupiter" /><div class="planet-label"><span class="planet-emoji"></span>Jupiter</div></a>
+      </div>
+      <div class="planet-container" tabindex="0">
+        <a href="#desc-saturn" aria-label="Saturn"><img src="img/saturn.png" alt="Saturn" /><div class="planet-label"><span class="planet-emoji"></span>Saturn</div></a>
+      </div>
+      <div class="planet-container" tabindex="0">
+        <a href="#desc-uranus" aria-label="Uranus"><img src="img/uranus.png" alt="Uranus" /><div class="planet-label"><span class="planet-emoji"></span>Uranus</div></a>
+      </div>
+      <div class="planet-container" tabindex="0">
+        <a href="#desc-neptune" aria-label="Neptune"><img src="img/neptune.png" alt="Neptune" /><div class="planet-label"><span class="planet-emoji"></span>Neptune</div></a>
+      </div>
+      <div class="planet-container" tabindex="0">
+        <a href="#desc-pluto" aria-label="Pluto"><img src="img/pluto.png" alt="Pluto" /><div class="planet-label"><span class="planet-emoji"></span>Pluto</div></a>
+      </div>
+
+    <!-- Planet Descriptions -->
+    <div class="descriptions" id="description">
+       <h2 class="section-title">🪐 Planet Descriptions</h2>
+      <section id="desc-sun">
+        <h2>☀️ Sun</h2>
+        <p>
+          The Sun is the star at the center of our solar system. It provides the light and heat necessary for life on Earth and governs the orbits of all planets.
+        </p>
+      </section>
+      <section id="desc-mercury">
+        <h2>🧿 Mercury</h2>
+        <p>
+          Mercury is the closest planet to the Sun and the smallest in the solar system. It has a rocky surface, extreme temperature swings, and no atmosphere to speak of.
+        </p>
+      </section>
+      <section id="desc-venus">
+        <h2>🟡 Venus</h2>
+        <p>
+          Venus is similar in size to Earth but has a thick, toxic atmosphere and surface temperatures hot enough to melt lead. It rotates in the opposite direction to most planets.
+        </p>
+      </section>
+      <section id="desc-earth">
+        <h2>🌍 Earth</h2>
+        <p>
+          Earth is our home planet and the only known world to support life. It has a rich diversity of ecosystems, liquid water, and a protective atmosphere.
+        </p>
+      </section>
+      <section id="desc-mars">
+        <h2>🔴 Mars</h2>
+        <p>
+          Mars is known as the Red Planet due to its iron oxide-rich soil. It has the largest volcano and canyon in the solar system and is a prime candidate for future exploration.
+        </p>
+      </section>
+      <section id="desc-jupiter">
+        <h2>🟠 Jupiter</h2>
+        <p>
+          Jupiter is the largest planet in the solar system, a gas giant with a powerful magnetic field and dozens of moons. Its Great Red Spot is a giant storm larger than Earth.
+        </p>
+      </section>
+      <section id="desc-saturn">
+        <h2>🪐 Saturn</h2>
+        <p>
+          Saturn is famous for its stunning ring system, made of ice and rock. It is a gas giant with over 80 moons, including the intriguing Titan.
+        </p>
+      </section>
+      <section id="desc-uranus">
+        <h2>🔵 Uranus</h2>
+        <p>
+          Uranus is an ice giant with a blue-green color due to methane in its atmosphere. It rotates on its side, making its seasons extreme and unique.
+        </p>
+      </section>
+      <section id="desc-neptune">
+        <h2>🌀 Neptune</h2>
+        <p>
+          Neptune is the farthest known planet from the Sun. It is a deep blue ice giant with supersonic winds and a faint ring system.
+        </p>
+      </section>
+      <section id="desc-pluto">
+        <h2>❄️ Pluto</h2>
+        <p>
+          Pluto, once considered the ninth planet, is now classified as a dwarf planet. It has a heart-shaped glacier and a thin atmosphere that expands as it approaches the Sun.
+        </p>
+      </section>
+    </div>
+  </main>
+  <!-- Project Videos Section -->
+<div class="video-gallery" id="videos">
+  <h2 class="section-title">🎥 Project Videos</h2>
+
+  <!-- 11 Placeholder Videos -->
+  <div class="video-placeholder">
+    <h3>📼 Video 1</h3>
+    <p><iframe src="https://www.youtube.com/embed/VIDEO_ID" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+</p>
+  </div>
+  <div class="video-placeholder">
+    <h3>📼 Video 2</h3>
+    <p><iframe src="https://www.youtube.com/embed/VIDEO_ID" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+</p>
+  </div>
+  <div class="video-placeholder">
+    <h3>📼 Video 3</h3>
+    <p><iframe src="https://www.youtube.com/embed/VIDEO_ID" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+</p>
+  </div>
+  <div class="video-placeholder">
+    <h3>📼 Video 4</h3>
+    <p><iframe src="https://www.youtube.com/embed/VIDEO_ID" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+</p>
+  </div>
+  <div class="video-placeholder">
+    <h3>📼 Video 5</h3>
+    <p><iframe src="https://www.youtube.com/embed/VIDEO_ID" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+</p>
+  </div>
+  <div class="video-placeholder">
+    <h3>📼 Video 6</h3>
+    <p><iframe src="https://www.youtube.com/embed/VIDEO_ID" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+</p>
+  </div>
+  <div class="video-placeholder">
+    <h3>📼 Video 7</h3>
+    <p><iframe src="https://www.youtube.com/embed/VIDEO_ID" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+</p>
+  </div>
+  <div class="video-placeholder">
+    <h3>📼 Video 8</h3>
+    <p><iframe src="https://www.youtube.com/embed/VIDEO_ID" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+</p>
+  </div>
+  <div class="video-placeholder">
+    <h3>📼 Video 9</h3>
+    <p><iframe src="https://www.youtube.com/embed/VIDEO_ID" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+</p>
+  </div>
+  <div class="video-placeholder">
+    <h3>📼 Video 10</h3>
+    <p><iframe src="https://www.youtube.com/embed/VIDEO_ID" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+</p>
+  </div>
+  <div class="video-placeholder">
+    <h3>📼 Video 11</h3>
+    <p><iframe src="https://www.youtube.com/embed/VIDEO_ID" width="100%" height="400" frameborder="0" allowfullscreen></iframe></p>
+  </div>
+</div>
+
+  <script>
+    // Updated emoji set
+    const emoji = {
+      Mercury: "🧿",
+      Venus: "🟡",
+      Earth: "🌍",
+      Mars: "🔴",
+      Jupiter: "🟠",
+      Saturn: "🪐",
+      Uranus: "🔵",
+      Neptune: "🌀",
+      Pluto: "❄️"
+    };
+
+    // Orbital periods in Earth years
+    const orbitYears = {
+      Mercury: 0.24,
+      Venus: 0.62,
+      Earth: 1,
+      Mars: 1.88,
+      Jupiter: 11.86,
+      Saturn: 29.46,
+      Uranus: 84.01,
+      Neptune: 164.8,
+      Pluto: 248.0
+    };
+
+    function convertUniversalAge() {
+      const age = parseFloat(document.getElementById("inputAge").value);
+      const fromPlanet = document.getElementById("inputPlanet").value;
+      const resultsDiv = document.getElementById("results");
+      resultsDiv.innerHTML = "";
+
+      if (isNaN(age) || age <= 0) {
+        resultsDiv.innerHTML = "<p>Please enter a valid age.</p>";
+        return;
+      }
+
+      // Convert input age on selected planet to Earth years
+      const earthYears = age * orbitYears[fromPlanet];
+
+      let table = `<table>
+        <tr>
+          <th>Planet</th>
+          <th>Years</th>
+          <th>Months</th>
+          <th>Weeks</th>
+          <th>Days</th>
+          <th>Hours</th>
+          <th>Minutes</th>
+          <th>Seconds</th>
+        </tr>`;
+
+      for (let planet in orbitYears) {
+        const years = earthYears / orbitYears[planet];
+        const months = years * 12;
+        const weeks = years * 52.1775;
+        const days = years * 365.25;
+        const hours = days * 24;
+        const minutes = hours * 60;
+        const seconds = minutes * 60;
+
+        table += `
+          <tr>
+            <td>${emoji[planet] || ""} <strong>${planet}</strong></td>
+            <td>${years.toFixed(2)}</td>
+            <td>${months.toFixed(0)}</td>
+            <td>${weeks.toFixed(0)}</td>
+            <td>${days.toFixed(0)}</td>
+            <td>${hours.toFixed(0)}</td>
+            <td>${minutes.toFixed(0)}</td>
+            <td>${seconds.toFixed(0)}</td>
+          </tr>
+        `;
+      }
+      table += `</table>`;
+      resultsDiv.innerHTML = table;
+    }
+
+    // Scroll to description section
+    function scrollToDesc(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        el.focus && el.focus();
+      }
+    }
+
+    // Keyboard accessibility for planet containers
+    document.querySelectorAll('.planet-container').forEach(container => {
+      container.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          const link = container.querySelector('a');
+          if (link) link.click();
+        }
+      });
+    });
+    window.onload = function() {
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+  window.addEventListener("scroll", () => {
+    scrollTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+  });
+
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+};
+
+  </script>
+ <!-- Back to Top Button -->
+<button id="scrollTopBtn" aria-label="Scroll to Top">▲</button>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="waves" id="about">
+    <div class="wave" id="wave1"></div>
+    <div class="wave" id="wave2"></div>
+    <div class="wave" id="wave3"></div>
+    <div class="wave" id="wave4"></div>
+  </div>
+  <ul class="social-icon">
+    <li class="social-icon__item"><a class="social-icon__link" href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
+    <li class="social-icon__item"><a class="social-icon__link" href="#"><ion-icon name="logo-twitter"></ion-icon></a></li>
+    <li class="social-icon__item"><a class="social-icon__link" href="#"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+    <li class="social-icon__item"><a class="social-icon__link" href="#"><ion-icon name="logo-instagram"></ion-icon></a></li>
+  </ul>
+  <ul class="menu">
+    <li class="menu__item"><a class="menu__link" href="#home">Home</a></li>
+    <li class="menu__item"><a class="menu__link" href="#about">About</a></li>
+    <li class="menu__item"><a class="menu__link" href="#age">Age</a></li>
+    <li class="menu__item"><a class="menu__link" href="#explore">Explore</a></li>
+    <li class="menu__item"><a class="menu__link" href="#descriptions">Descriptions</a></li>
+  </ul>
+  <p>&copy;2025 Darryl Tesorero | Blender & Rotoscope Project Project</p>
+</footer>
+
+<!-- Ionicons -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"> </script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
